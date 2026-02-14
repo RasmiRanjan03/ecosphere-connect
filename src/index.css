@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 140 20% 97%;
+    --foreground: 160 30% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 160 30% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 160 30% 10%;
+
+    --primary: 152 58% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 75% 48%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 140 15% 93%;
+    --muted-foreground: 160 10% 45%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 140 15% 88%;
+    --input: 140 15% 88%;
+    --ring: 152 58% 36%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 152 30% 12%;
+    --sidebar-foreground: 140 20% 90%;
+    --sidebar-primary: 152 58% 46%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 152 25% 18%;
+    --sidebar-accent-foreground: 140 20% 90%;
+    --sidebar-border: 152 20% 20%;
+    --sidebar-ring: 152 58% 46%;
+
+    /* Custom tokens */
+    --success: 152 58% 36%;
+    --warning: 38 92% 50%;
+    --danger: 0 72% 51%;
+    --info: 200 75% 48%;
+
+    --gradient-eco: linear-gradient(135deg, hsl(152 58% 36%), hsl(200 75% 48%));
+    --gradient-hero: linear-gradient(135deg, hsl(152 30% 12%), hsl(152 58% 30%));
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(140 20% 98%));
+
+    --shadow-eco: 0 4px 24px -4px hsl(152 58% 36% / 0.15);
+    --shadow-card: 0 1px 3px hsl(160 30% 10% / 0.05), 0 8px 24px hsl(160 30% 10% / 0.08);
+    --shadow-glow: 0 0 20px hsl(152 58% 36% / 0.2);
+
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+  }
+
+  .dark {
+    --background: 160 25% 6%;
+    --foreground: 140 15% 93%;
+
+    --card: 160 20% 10%;
+    --card-foreground: 140 15% 93%;
+
+    --popover: 160 20% 10%;
+    --popover-foreground: 140 15% 93%;
+
+    --primary: 152 58% 46%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 200 75% 48%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 160 15% 15%;
+    --muted-foreground: 140 10% 55%;
+
+    --accent: 38 92% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 160 15% 18%;
+    --input: 160 15% 18%;
+    --ring: 152 58% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-white/20 shadow-lg;
+  }
+
+  .glass-card-dark {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .gradient-eco {
+    background: var(--gradient-eco);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-eco {
+    box-shadow: var(--shadow-eco);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .eco-badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .eco-badge-success {
+    @apply eco-badge bg-primary/10 text-primary;
+  }
+
+  .eco-badge-warning {
+    @apply eco-badge bg-accent/10 text-accent;
+  }
+
+  .eco-badge-danger {
+    @apply eco-badge bg-destructive/10 text-destructive;
+  }
+
+  .eco-badge-info {
+    @apply eco-badge bg-secondary/10 text-secondary;
+  }
+
+  .stat-card {
+    @apply bg-card rounded-xl p-5 shadow-card border border-border/50 transition-all duration-300 hover:shadow-eco hover:-translate-y-0.5;
+  }
+
+  .page-container {
+    @apply p-4 md:p-6 lg:p-8 space-y-6;
+  }
+
+  .page-title {
+    @apply text-2xl md:text-3xl font-bold text-foreground;
+    font-family: var(--font-display);
+  }
+}
+
+@layer utilities {
+  .text-gradient-eco {
+    background: var(--gradient-eco);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
